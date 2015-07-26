@@ -20,6 +20,25 @@ class TodoItemsController < ApplicationController
          render action: :new
      end
   end
+    
+  def edit
+     @todo_list = TodoList.find(params[:todo_list_id])
+     @todo_item = @todo_list.todo_items.find(params[:id])
+  end
+  
+  def update
+     @todo_list = TodoList.find(params[:todo_list_id])
+     @todo_item = @todo_list.todo_items.find(params[:id])
+        
+     if @todo_item.update(todo_item_params)
+         flash[:succes]="Saved todo list item."
+         redirect_to(todo_list_todo_items_path(@todo_list))
+     else
+        flash[:error]="Error saving todo item."
+        render action: :edit
+     end
+     
+  end
 
   private
   def todo_item_params
