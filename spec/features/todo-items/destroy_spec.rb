@@ -5,7 +5,7 @@ describe "Deleting todo_item" do
     let!(:todo_item) {todo_list.todo_items.create(content: "Milk")}
 
     def delete_todo_item
-        within("#todo_item_#{todo_item.id}") do
+        within(dom_id_for(todo_item)) do
             click_link "Delete"
         end
     end

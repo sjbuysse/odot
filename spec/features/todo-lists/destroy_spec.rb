@@ -6,7 +6,7 @@ describe "Deleting to do lists" do
         it "is successfull when clicking delete button" do
             visit "/todo_lists"
             expect(page).to have_content("Groceries")
-            within "#todo_list_#{todo_list.id}" do 
+            within(dom_id_for(todo_list)) do
                 click_link "Destroy"
             end
 

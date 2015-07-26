@@ -9,7 +9,7 @@ describe "Editing to do lists" do
         todo_list = options[:todo_list]
         
         visit "/todo_lists" 
-        within "#todo_list_#{todo_list.id}" do 
+        within(dom_id_for(todo_list)) do
             click_link "Edit"
         end
        

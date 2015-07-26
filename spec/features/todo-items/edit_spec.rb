@@ -6,7 +6,7 @@ describe 'editting todo items' do
     def edit_todo_item(options={})
         options[:content]  ||= "Red beets"
 
-        within("#todo_item_#{todo_item.id}") do
+        within(dom_id_for(todo_item)) do
             click_link "Edit"
         end
         fill_in "Content", with: options[:content]
