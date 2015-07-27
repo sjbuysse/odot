@@ -9,7 +9,7 @@ describe "Viewing todo items" do
 
     it "displays no todo items when the list is empty" do
         visit_todo_list(todo_list)
-        expect(page.all("table.todo_items li").size).to eq(0)
+        expect(page.all("table.todo_items tr").size).to eq(1)
     end   
     
     it "displays todo items when the list is not empty" do
@@ -18,7 +18,7 @@ describe "Viewing todo items" do
         todo_list.todo_items << l
         todo_list.todo_items << d
         visit_todo_list(todo_list)
-        expect(page.all("ul.todo_items li").size).to eq(2)
+        expect(page.all("table.todo_items tr").size).to eq(3)
         expect(page).to have_content("paksoi")
     end   
 
