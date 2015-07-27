@@ -19,4 +19,14 @@ describe TodoItem do
              end
          end
      end
+
+     describe "#complete!" do
+         let!(:todo_item) {TodoItem.create(content: "Milk")}
+         
+         it "succesfully updated the complete attribute" do
+            todo_item.completed_at = nil
+            todo_item.complete!
+            expect(todo_item.completed?).to be_true
+         end
+     end
 end
